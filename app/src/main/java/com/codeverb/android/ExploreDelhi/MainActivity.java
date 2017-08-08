@@ -15,11 +15,10 @@
  */
 package com.codeverb.android.ExploreDelhi;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,55 +30,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        // Find the view pager that will allow the user to swipe between fragments
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        //Find the view by id
-        TextView numbers = (TextView) findViewById(R.id.events);
-        //set on click listener on the above View
-        numbers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(view.getContext(), "Open the list of numbers", Toast.LENGTH_SHORT).show();
+        // Create an adapter that knows which fragment should be shown on each page
+        FragmentAdapter adapter = new FragmentAdapter(this, getSupportFragmentManager());
 
-                Intent numbersIntent = new Intent(MainActivity.this, EventActivity.class);
-
-                //start the activity
-                startActivity(numbersIntent);
-            }
-        });
+        // Set the adapter onto the view pager
+        viewPager.setAdapter(adapter);
 
 
+        // Find the tab layout that shows the tabs
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        //Find the view by id
-        TextView foods = (TextView) findViewById(R.id.foods);
-        //set on click listener on the above View
-        foods.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(view.getContext(), "Open the list of numbers", Toast.LENGTH_SHORT).show();
-
-                Intent foodsIntent = new Intent(MainActivity.this, FoodActivity.class);
-
-                //start the activity
-                startActivity(foodsIntent);
-            }
-        });
+        // Connect the tab layout with the view pager. This will
+        //   1. Update the tab layout when the view pager is swiped
+        //   2. Update the view pager when a tab is selected
+        //   3. Set the tab layout's tab names with the view pager's adapter's titles
+        //      by calling onPageTitle()
+        tabLayout.setupWithViewPager(viewPager);
 
 
 
-
-        //Find the view by id
-        TextView place = (TextView) findViewById(R.id.places);
-        //set on click listener on the above View
-        place.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(view.getContext(), "Open the list of numbers", Toast.LENGTH_SHORT).show();
-
-                Intent PlaceIntent = new Intent(MainActivity.this, PlaceActivity.class);
-
-                //start the activity
-                startActivity(PlaceIntent);
-            }
-        });
     }
 }
