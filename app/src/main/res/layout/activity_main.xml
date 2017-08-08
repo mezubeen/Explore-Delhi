@@ -1,0 +1,32 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tan_background"
+    android:orientation="vertical"
+    tools:context="com.codeverb.android.ExploreDelhi.MainActivity">
+
+    <TextView
+        android:id="@+id/foods"
+        style="@style/CategoryStyle"
+        android:background="@color/category_numbers"
+        android:text="@string/category_foods"
+        />
+
+    <TextView
+        android:id="@+id/events"
+        style="@style/CategoryStyle"
+        android:background="@color/category_family"
+        android:text="@string/category_events" />
+
+    <TextView
+        android:id="@+id/places"
+        style="@style/CategoryStyle"
+        android:background="@color/category_colors"
+        android:text="@string/category_places" />
+
+
+
+</LinearLayout>
